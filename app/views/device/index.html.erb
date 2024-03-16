@@ -1,24 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>Devices</h1>
 
- <% if @products.present? %>
+ <% if @device.present? %>
  <table class="relative top-[-50px]">      
     <thead>
     <tr class="border-[1px] border-white">
-    <th>Product ID</th>
-    <th>Product Name</th>
+    <th>Brand</th>
+    <th>Model</th>
     <th>Price</th>
-    <th>Description</th>
+    <th>Image</th>
     </tr>
     </thead>
     <tbody>
-     <% @products.each do |p| %>
+     <% @device.each do |p| %>
         <tr class="border-[1px] border-white text-center">
-            <td class="px-[50px]"><%= p.id %></td>
-            <td class="px-[50px]"><%= p.title %></td>
+            <td class="px-[50px]"><%= p.brand %></td>
+            <td class="px-[50px]"><%= p.model %></td>
             <td class="px-[50px]"><%= p.price %></td>
-            <td class="px-[50px]"><%= p.description %></td>
+            <td class="px-[50px]"><%= p.image %></td>
         </tr>
     <% end %>
     </tbody>
@@ -27,6 +27,5 @@
         <p class="px-[50px] absolute top-[50%] left-[48.5%] translate-x-[-50%] translate-y-[-50%]">No Results Found</p>
     <% end %>
     </div>
-
-    <%= paginate @products%>
+    <%= paginate @device%>
 </div>
