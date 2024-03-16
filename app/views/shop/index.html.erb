@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Items Sold</h1>
+
+<div>
+  <% @shops.each do |shop| %>
+    <%= render shop %>
+    <p>
+      <%= link_to "Show this shop", shop %>
+    </p>
+  <% end %>
+</div>
+
