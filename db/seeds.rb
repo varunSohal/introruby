@@ -1,6 +1,7 @@
 # products API
 require 'json'
 require 'net/http'
+require 'faker'
 
 uri = URI('https://fakestoreapi.com/products')
 response = Net::HTTP.get_response(uri)
@@ -25,5 +26,16 @@ devices.each do |row|
     model: row["model"],
     price: row["price"],
     image: row["image"]
+  )
+end
+
+
+# Generate Faker data for users table
+100.times do
+  User.create(
+    name: Faker::Name.unique.name,
+    age: Faker::Number.between(from: 18, to: 100),
+    username: Faker::Internet.unique.username(specifier: 8..12),
+    email: Faker::Internet.unique.email
   )
 end

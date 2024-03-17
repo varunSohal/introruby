@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Users</h1>
+
+ <% if @users.present? %>
+ <table class="relative top-[-50px]">      
+    <thead>
+    <tr class="border-[1px] border-white">
+    <th>Name</th>
+    <th>Age</th>
+    <th>Username</th>
+    <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+     <% @users.each do |p| %>
+        <tr class="border-[1px] border-white text-center">
+            <td class="px-[50px]"><%= p.name %></td>
+            <td class="px-[50px]"><%= p.age %></td>
+            <td class="px-[50px]"><%= p.username %></td>
+            <td class="px-[50px]"><%= p.email %></td>
+        </tr>
+    <% end %>
+    </tbody>
+    </table>
+    <% else %>
+        <p class="px-[50px] absolute top-[50%] left-[48.5%] translate-x-[-50%] translate-y-[-50%]">No Results Found</p>
+    <% end %>
+    </div>
+<%=paginate @users%> 
+</div>
