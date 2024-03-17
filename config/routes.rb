@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get'devices', to:"device#index"
   get'devices', to:"device#about"
   get'users', to:"user#index"
+  get'dogs', to:"dogs#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

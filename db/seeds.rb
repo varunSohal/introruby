@@ -39,3 +39,15 @@ end
     email: Faker::Internet.unique.email
   )
 end
+uri = URI('https://freetestapi.com/api/v1/dogs')
+response = Net::HTTP.get_response(uri)
+dogs = JSON.parse(response.body)
+
+dogs.each do |row|
+  Dog.create(
+    name: row["name"],
+    size: row["size"],
+    origin: row["origin"],
+    color: row["color"]
+  )
+end
