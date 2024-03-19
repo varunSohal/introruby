@@ -1,0 +1,6 @@
+<h1><%= @device.brand %> <%= @device.model %></h1>
+<p>Price: <%= @device.price %></p>
+<h2>Comments</h2>
+<% @device.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+<% end %>

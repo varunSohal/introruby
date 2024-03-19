@@ -1,32 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<form action="<%= products_path %>" method="get" class="mb-3">
+  <div class="input-group">
+    <input type="text" name="search" class="form-control" placeholder="Search Here...">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
+
+<p class="text-success"><%= notice %></p>
 
 <h1>Products</h1>
 
- <% if @products.present? %>
- <table class="relative top-[-50px]">      
-    <thead>
-    <tr class="border-[1px] border-white">
-    <th>Product ID</th>
-    <th>Product Name</th>
-    <th>Price</th>
-    <th>Description</th>
-    </tr>
+<% if @products.present? %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
     </thead>
     <tbody>
-     <% @products.each do |p| %>
-        <tr class="border-[1px] border-white text-center">
-            <td class="px-[50px]"><%= p.id %></td>
-            <td class="px-[50px]"><%= p.title %></td>
-            <td class="px-[50px]"><%= p.price %></td>
-            <td class="px-[50px]"><%= p.description %></td>
+      <% @products.each do |p| %>
+        <tr>
+          <td><%= p.id %></td>
+          <td><%= p.title %></td>
+          <td><%= p.price %></td>
+          <td><%= p.description %></td>
         </tr>
-    <% end %>
+      <% end %>
     </tbody>
-    </table>
-    <% else %>
-        <p class="px-[50px] absolute top-[50%] left-[48.5%] translate-x-[-50%] translate-y-[-50%]">No Results Found</p>
-    <% end %>
-    </div>
-
-    <%= paginate @products%>
+  </table>
 </div>
+<% else %>
+  <p>No Results Found</p>
+<% end %>
+
+<%= paginate @products %>

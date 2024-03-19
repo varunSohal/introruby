@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :device
   resources :shops
+  resources :categories
   # this is the route to set the HOME PAGE
   root 'home#index'
   get 'products', to:"product#index"
@@ -8,6 +10,8 @@ Rails.application.routes.draw do
   get'devices', to:"device#about"
   get'users', to:"user#index"
   get'dogs', to:"dogs#index"
+  get 'users/:id', to:"user#show"
+  get '/search', to: 'search#index', as: :search
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

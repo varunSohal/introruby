@@ -1,31 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-success"><%= notice %></p>
 
 <h1>Devices</h1>
 
- <% if @device.present? %>
- <table class="relative top-[-50px]">      
-    <thead>
-    <tr class="border-[1px] border-white">
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Price</th>
-    <th>Image</th>
-    </tr>
+<% if @device.present? %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
     </thead>
     <tbody>
-     <% @device.each do |p| %>
-        <tr class="border-[1px] border-white text-center">
-            <td class="px-[50px]"><%= p.brand %></td>
-            <td class="px-[50px]"><%= p.model %></td>
-            <td class="px-[50px]"><%= p.price %></td>
-            <td class="px-[50px]"><%= p.image %></td>
+      <% @device.each do |p| %>
+        <tr>
+          <td><%= p.brand %></td>
+          <td><%= p.model %></td>
+          <td><%= p.price %></td>
+          <td><%= p.image %></td>
         </tr>
-    <% end %>
+      <% end %>
     </tbody>
-    </table>
-    <% else %>
-        <p class="px-[50px] absolute top-[50%] left-[48.5%] translate-x-[-50%] translate-y-[-50%]">No Results Found</p>
-    <% end %>
-    </div>
-    <%= paginate @device%>
+  </table>
 </div>
+<% else %>
+  <p class="text-center">No Results Found</p>
+<% end %>
+
+<%= paginate @device %>

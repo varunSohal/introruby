@@ -1,31 +1,35 @@
-<p style="color: green"><%= notice %></p>
+<form action="/users" method="get" class="mb-3">
+  <div class="input-group">
+    <input type="text" name="search" class="form-control" placeholder="Search...">
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
+</form>
 
-<h1>Users</h1>
-
- <% if @users.present? %>
- <table class="relative top-[-50px]">      
-    <thead>
-    <tr class="border-[1px] border-white">
-    <th>Name</th>
-    <th>Age</th>
-    <th>Username</th>
-    <th>Email</th>
-    </tr>
+<% if @users.present? %>
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Username</th>
+        <th>Email</th>
+      </tr>
     </thead>
     <tbody>
-     <% @users.each do |p| %>
-        <tr class="border-[1px] border-white text-center">
-            <td class="px-[50px]"><%= p.name %></td>
-            <td class="px-[50px]"><%= p.age %></td>
-            <td class="px-[50px]"><%= p.username %></td>
-            <td class="px-[50px]"><%= p.email %></td>
+      <% @users.each do |p| %>
+        <tr>
+          <td><%= link_to "/users/#{p.id}", class: "text-decoration-none" do %><%= p.name %><% end %></td>
+          <td><%= p.age %></td>
+          <td><%= p.username %></td>
+          <td><%= p.email %></td>
         </tr>
-    <% end %>
+      <% end %>
     </tbody>
-    </table>
-    <% else %>
-        <p class="px-[50px] absolute top-[50%] left-[48.5%] translate-x-[-50%] translate-y-[-50%]">No Results Found</p>
-    <% end %>
-    </div>
-<%=paginate @users%> 
+  </table>
 </div>
+<% else %>
+  <p>No Results Found</p>
+<% end %>
+
+<%= paginate @users %>

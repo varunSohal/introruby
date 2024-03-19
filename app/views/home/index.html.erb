@@ -1,2 +1,28 @@
-<h1>Home Wrold!</h1>
-This is my first rails webpage 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= link_to 'Products', products_path, class: "nav-link" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Devices', devices_path, class: "nav-link" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Users', users_path, class: "nav-link" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Dogs', dogs_path, class: "nav-link" %></td>
+          </tr>
+          <tr>
+            <td><%= link_to 'Categories', categories_path, class: "nav-link" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</nav>

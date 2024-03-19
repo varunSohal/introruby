@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_17_073510) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_19_043309) do
+  create_table "categories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "devices", force: :cascade do |t|
     t.string "brand"
     t.string "model"
@@ -34,8 +39,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_17_073510) do
     t.integer "price"
     t.string "description"
     t.string "category"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
+  end
+
+  create_table "products_users", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_products_users_on_product_id"
+    t.index ["user_id"], name: "index_products_users_on_user_id"
   end
 
   create_table "shops", force: :cascade do |t|
@@ -47,6 +65,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_17_073510) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_products", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_user_products_on_product_id"
+    t.index ["user_id"], name: "index_user_products_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "age"
@@ -56,4 +83,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_17_073510) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "products", "categories"
+  add_foreign_key "products_users", "products"
+  add_foreign_key "products_users", "users"
+  add_foreign_key "user_products", "products"
+  add_foreign_key "user_products", "users"
 end
