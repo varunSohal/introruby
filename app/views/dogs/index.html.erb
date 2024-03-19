@@ -25,7 +25,7 @@
       <tbody>
         <% @dogs.each do |dog| %>
           <tr>
-            <td><%= dog.name %></td>
+            <td><%= link_to "/dogs/#{dog.id}", class: "text-decoration-none" do %><%= dog.name %><% end %></td>
             <td><%= dog.size %></td>
             <td><%= dog.origin %></td>
             <td><%= dog.color %></td>
@@ -39,3 +39,5 @@
 <% end %>
 
 <%= paginate @dogs %>
+<%= link_to "Back to home", root_path %>
+

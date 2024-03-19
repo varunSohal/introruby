@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :device
   resources :shops
   resources :categories
+  resources :dogs
   # this is the route to set the HOME PAGE
   root 'home#index'
   get 'products', to:"product#index"
