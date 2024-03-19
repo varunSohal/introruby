@@ -56,15 +56,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_19_043309) do
     t.index ["user_id"], name: "index_products_users_on_user_id"
   end
 
-  create_table "shops", force: :cascade do |t|
-    t.string "model"
-    t.string "brand"
-    t.integer "price"
-    t.string "paymentmethod"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_products", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "product_id", null: false
