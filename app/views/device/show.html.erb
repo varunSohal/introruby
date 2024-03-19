@@ -1,6 +1,46 @@
-<h1><%= @device.brand %> <%= @device.model %></h1>
-<p>Price: <%= @device.price %></p>
-<h2>Comments</h2>
-<% @device.comments.each do |comment| %>
-  <p><%= comment.body %></p>
+<h1>Device Details</h1>
+
+<div>
+  <strong>Brand:</strong> <%= @device.brand %>
+</div>
+
+<div>
+  <strong>Model:</strong> <%= @device.model %>
+</div>
+
+<div>
+  <strong>Price:</strong> <%= @device.price %>
+</div>
+
+<div>
+  <strong>Image:</strong> <%= @device.image %>
+</div>
+
+<h2>Associated Dogs:</h2>
+<% if @associated_dogs.present? %>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th>Name</th>
+          <th>Breed</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @associated_dogs.each do |dog| %>
+          <tr>
+            <td><%= dog.name %></td>
+            <td><%= dog.breed %></td>
+            <td><%= dog.age %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= will_paginate @associated_dogs %>
+<% else %>
+  <p>No dogs associated with this device.</p>
 <% end %>
+
+<%= link_to "Back", devices_path %>
